@@ -1,0 +1,35 @@
+version: "3.5"
+services:
+  app_db:
+    container_name: publicacoes_online_db
+    image: postgres:14
+    volumes:
+      - db-data:/data
+      - ./db_init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    environment:
+      POSTGRES_DB: publicacoes_online_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - app-connect
+
+  app_rabbitmq:
+    container_name: publicacoes_online_rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: example
+      RABBITMQ_DEFAULT_PASS: example
+    networks:
+      - app-connect
+
+volumes:
+  db-data:
+
+networks:
+  app-connect:
+    driver: bridge

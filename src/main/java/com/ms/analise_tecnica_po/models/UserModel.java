@@ -1,45 +1,60 @@
 package com.ms.analise_tecnica_po.models;
 
-import java.util.UUID;
-
-import com.ms.analise_tecnica_po.controllers.dtos.RegisterUserRecordDto;
-import com.ms.analise_tecnica_po.controllers.dtos.UpdateUserRecordDto;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "user")
-@Entity(name = "users")
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
+
+import com.ms.analise_tecnica_po.controllers.dtos.users.RegisterUserRecordDto;
+import com.ms.analise_tecnica_po.controllers.dtos.users.UpdateUserRecordDto;
+
+@Entity
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserModel {
-  private static final long serialVersionUID = 1L;
-  
-  public UserModel(RegisterUserRecordDto user){
-    this.name = user.name();
-    this.email = user.email();
-  }
+@AllArgsConstructor
+public class UserModel implements Serializable {
+    private static final long serialVersionUID = 1L;
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID userId;
-  private String name;
-  private String email;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
-  public void updateUser(@Valid UpdateUserRecordDto dados){
-    if (dados.name() != null) {
-      this.name = dados.name();
+    private String name;
+    private String email;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ProcessModel> processes = new HashSet<>();
+
+    public UserModel(RegisterUserRecordDto user) {
+        this.name = user.name();
+        this.email = user.email();
     }
-    if (dados.email() != null) {
-      this.email = dados.email();
+
+    public void updateUser(@Valid UpdateUserRecordDto data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.email() != null) {
+            this.email = data.email();
+        }
     }
-  }
+
+    public void addProcess(ProcessModel process) {
+        this.processes.add(process);
+        process.setUser(this);
+    }
+
+    public void removeProcess(ProcessModel process) {
+        this.processes.remove(process);
+        process.setUser(null);
+    }
 }

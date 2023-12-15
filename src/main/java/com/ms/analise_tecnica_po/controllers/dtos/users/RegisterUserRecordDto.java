@@ -1,4 +1,4 @@
-package com.ms.analise_tecnica_po.controllers.dtos;
+package com.ms.analise_tecnica_po.controllers.dtos.users;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

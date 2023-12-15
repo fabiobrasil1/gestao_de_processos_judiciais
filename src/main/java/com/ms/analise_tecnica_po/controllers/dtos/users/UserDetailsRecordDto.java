@@ -1,4 +1,4 @@
-package com.ms.analise_tecnica_po.controllers.dtos;
+package com.ms.analise_tecnica_po.controllers.dtos.users;
 
 import java.util.UUID;
 
@@ -13,7 +13,7 @@ public record UserDetailsRecordDto(
 
   public UserDetailsRecordDto(UserModel user){
     this(
-      user.getUserId(),
+      user.getId(),
       user.getName(),
       user.getEmail()
     );

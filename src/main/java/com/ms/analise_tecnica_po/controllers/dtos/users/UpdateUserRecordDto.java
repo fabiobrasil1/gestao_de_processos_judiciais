@@ -1,11 +1,11 @@
-package com.ms.analise_tecnica_po.controllers.dtos;
+package com.ms.analise_tecnica_po.controllers.dtos.users;
 
 import java.util.UUID;
 
 import io.micrometer.common.lang.NonNull;
-import jakarta.persistence.Enumerated;
+
 import jakarta.validation.constraints.NotBlank;
-import lombok.ToString;
+
 
 public record UpdateUserRecordDto(
   @NonNull

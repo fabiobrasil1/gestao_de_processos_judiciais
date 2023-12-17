@@ -14,9 +14,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.ms.analise_tecnica_po.controllers.dtos.process.ProcessDetailsRecordDto;
 import com.ms.analise_tecnica_po.controllers.dtos.process.ProcessRecordDto;
+
 import com.ms.analise_tecnica_po.useCases.process.FindProcessByIdUseCase;
 import com.ms.analise_tecnica_po.useCases.process.RegisterProcessUseCase;
-
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -29,15 +29,16 @@ public class ProcessController {
   @Autowired
   private FindProcessByIdUseCase findProcessByIdUC;
 
-
-@PostMapping
+  @PostMapping
   @Transactional
-  public ResponseEntity<ProcessDetailsRecordDto> register(@RequestBody @Valid ProcessRecordDto data, UriComponentsBuilder uriBuilder) {
-   return registerProcessUC.execute(data, uriBuilder);
+  public ResponseEntity<ProcessDetailsRecordDto> register(
+      @RequestBody @Valid ProcessRecordDto data,
+      UriComponentsBuilder uriBuilder) {
+    return registerProcessUC.execute(data, uriBuilder);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ProcessDetailsRecordDto> findById (@PathVariable UUID id){
+  public ResponseEntity<ProcessDetailsRecordDto> findById(@PathVariable UUID id) {
     return findProcessByIdUC.execute(id);
   }
 }

@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,11 +33,7 @@ public class ProcessModel implements Serializable {
     private UserModel user;
 
     @ManyToMany
-    @JoinTable(
-        name = "process_defendant",
-        joinColumns = @JoinColumn(name = "process_id"),
-        inverseJoinColumns = @JoinColumn(name = "defendant_id")
-    )
+    @JoinTable(name = "process_defendant", joinColumns = @JoinColumn(name = "process_id"), inverseJoinColumns = @JoinColumn(name = "defendant_id"))
     private Set<DefendantModel> defendants = new HashSet<>();
 
     @Column(unique = true, nullable = false)

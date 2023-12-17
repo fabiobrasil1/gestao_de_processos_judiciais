@@ -6,16 +6,11 @@ import io.micrometer.common.lang.NonNull;
 
 import jakarta.validation.constraints.NotBlank;
 
-
 public record UpdateUserRecordDto(
-  @NonNull
-  UUID id,
-  
-  @NotBlank
-  String name,
+    @NonNull UUID id,
 
-  @NotBlank
-  String email
-) {
-  
+    @NotBlank String name,
+
+    @NotBlank String email) {
+
 }

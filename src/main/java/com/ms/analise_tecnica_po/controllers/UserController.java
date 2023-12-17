@@ -27,15 +27,16 @@ public class UserController {
   private RegisterUserUseCase registerUserUC;
   @Autowired
   private FindUserByIdUseCase findUserByIdUC;
-  
+
   @PostMapping
   @Transactional
-  public ResponseEntity<UserDetailsRecordDto> register(@RequestBody @Valid RegisterUserRecordDto data, UriComponentsBuilder uriBuilder) {
-   return registerUserUC.execute(data, uriBuilder);
+  public ResponseEntity<UserDetailsRecordDto> register(@RequestBody @Valid RegisterUserRecordDto data,
+      UriComponentsBuilder uriBuilder) {
+    return registerUserUC.execute(data, uriBuilder);
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserDetailsRecordDto> findById (@PathVariable UUID id){
+  public ResponseEntity<UserDetailsRecordDto> findById(@PathVariable UUID id) {
     return findUserByIdUC.execute(id);
   }
 }

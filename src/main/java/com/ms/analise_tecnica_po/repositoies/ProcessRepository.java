@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ms.analise_tecnica_po.models.ProcessModel;
 
-public interface ProcessRepository extends JpaRepository<ProcessModel, UUID>{
-  
+public interface ProcessRepository extends JpaRepository<ProcessModel, UUID> {
+
 }

@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record ProcessRecordDto(
-    @NotNull UUID userId,
+    @NotNull(message = "O userId e obrigatório.") UUID userId,
 
     @NotBlank(message = "A descrição do processo é obrigatória.") String description,
 

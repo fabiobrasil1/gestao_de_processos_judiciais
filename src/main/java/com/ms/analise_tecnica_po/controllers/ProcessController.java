@@ -63,7 +63,7 @@ public class ProcessController {
   }
 
   @DeleteMapping("/{userId}/{processNumber}")
-  public ResponseEntity<Void> deleteProcessByNumberAndUser(
+  public ResponseEntity<String> deleteProcessByNumberAndUser(
       @PathVariable UUID userId,
       @PathVariable String processNumber) {
 
@@ -71,7 +71,8 @@ public class ProcessController {
       deleteProcessUC.execute(userId, processNumber);
       return ResponseEntity.noContent().build();
     } catch (EntityNotFoundException ex) {
-      return ResponseEntity.notFound().build();
+      String errorMessage = ex.getMessage(); // Detalhe da exceção
+      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     } catch (Exception ex) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
     }

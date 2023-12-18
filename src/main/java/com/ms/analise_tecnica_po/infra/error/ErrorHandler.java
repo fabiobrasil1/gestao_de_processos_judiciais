@@ -21,7 +21,7 @@ public class ErrorHandler extends RuntimeException {
 
   @ExceptionHandler(EntityNotFoundException.class)
   public ResponseEntity<ErrorResponse> notFound() {
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("Recurso não encontrado"));
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse("Usuário não encontrado!"));
   }
 
   @ExceptionHandler(MethodArgumentNotValidException.class)

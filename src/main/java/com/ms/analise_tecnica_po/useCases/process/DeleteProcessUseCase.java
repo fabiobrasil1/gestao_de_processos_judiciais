@@ -17,17 +17,13 @@ public class DeleteProcessUseCase {
   @Autowired
   private ProcessRepository processRepository;
 
-  public void execute(UUID userId, String processNumber) {
-    // Lógica para buscar o processo pelo número do processo e ID do usuário
+  public ResponseEntity<String> execute(UUID userId, String processNumber) {
     ProcessModel processToDelete = findProcessByNumberAndUser(userId, processNumber);
-
-    // Lógica para deletar o processo
     deleteProcess(processToDelete.getId());
+    return ResponseEntity.noContent().build();
   }
 
   public ProcessModel findProcessByNumberAndUser(UUID userId, String processNumber) {
-    // Lógica para buscar o processo pelo número do processo e ID do usuário
-    // Certifique-se de implementar essa lógica no seu projeto
     return processRepository.findByUser_IdAndProcessNumberIgnoreCase(userId, processNumber)
         .orElseThrow(() -> new EntityNotFoundException("Processo não encontrado"));
   }

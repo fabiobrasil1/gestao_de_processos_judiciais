@@ -3,6 +3,7 @@ package com.ms.analise_tecnica_po.useCases.process;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ms.analise_tecnica_po.models.DefendantModel;
@@ -33,5 +34,10 @@ public class AddDefendantUseCase {
 
     defendantRepository.save(newDefendant);
     processRepository.save(process);
+  }
+
+  public ProcessModel findProcessById(UUID processId) {
+    return processRepository.findById(processId)
+        .orElseThrow(() -> new EntityNotFoundException("Processo não encontrado"));
   }
 }

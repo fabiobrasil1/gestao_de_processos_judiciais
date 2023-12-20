@@ -28,15 +28,17 @@ public class SecurityConfig {
     return http.csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and().authorizeHttpRequests()
-        .requestMatchers("/**").permitAll() // Permitir todos os endpoints sem autenticação
-        .and().addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+        // .requestMatchers("/**").permitAll() // Permitir todos os endpoints sem
+        // autenticação
+        // .and().addFilterBefore(securityFilter,
+        // UsernamePasswordAuthenticationFilter.class)
+        // .build();
+        .requestMatchers(HttpMethod.POST, "/auth").permitAll()
+        .requestMatchers(HttpMethod.POST, "/users").permitAll()
+        .anyRequest().authenticated()
+        .and().addFilterBefore(securityFilter,
+            UsernamePasswordAuthenticationFilter.class)
         .build();
-    // .requestMatchers(HttpMethod.POST, "/auth").permitAll()
-    // .requestMatchers(HttpMethod.POST, "/users").permitAll()
-    // // .anyRequest().authenticated()
-    // .and().addFilterBefore(securityFilter,
-    // UsernamePasswordAuthenticationFilter.class)
-    // .build();
   }
 
   @Bean

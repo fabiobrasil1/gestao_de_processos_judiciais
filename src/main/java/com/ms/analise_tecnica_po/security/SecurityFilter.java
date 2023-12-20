@@ -15,12 +15,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@Component
 public class SecurityFilter extends OncePerRequestFilter {
   @Autowired
-  private TokenService tokenService;
-  @Autowired
   private UserRepository userRepository;
+  @Autowired
+  private TokenService tokenService;
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

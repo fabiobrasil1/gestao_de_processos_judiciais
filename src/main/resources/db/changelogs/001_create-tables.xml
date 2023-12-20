@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+  <!-- Create users table -->
+  <changeSet id="createUsersTable" author="your_name">
+    <createTable tableName="users">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="name" type="varchar(255)" />
+      <column name="password" type="varchar(255)" />
+      <column name="email" type="varchar(255)">
+        <constraints unique="true" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <!-- Create processes table -->
+  <changeSet id="createProcessesTable" author="your_name">
+    <createTable tableName="processes">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="description" type="varchar(255)" />
+      <column name="processNumber" type="varchar(255)">
+        <constraints unique="true" nullable="false" />
+      </column>
+      <column name="user_id" type="uuid">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <!-- Create defendants table -->
+  <changeSet id="createDefendantsTable" author="your_name">
+    <createTable tableName="defendants">
+      <column name="id" type="uuid">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="name" type="varchar(255)" />
+    </createTable>
+  </changeSet>
+
+  <!-- Create process_defendant join table -->
+  <changeSet id="createProcessDefendantTable" author="your_name">
+    <createTable tableName="process_defendant">
+      <column name="process_id" type="uuid">
+        <constraints nullable="false" />
+      </column>
+      <column name="defendant_id" type="uuid">
+        <constraints nullable="false" />
+      </column>
+      <!-- Mova a restrição única para dentro do elemento column -->
+      <column name="uniqueConstraint" type="varchar(255)">
+        <constraints unique="true" />
+      </column>
+    </createTable>
+  </changeSet>
+
+  <!-- Add foreign key constraints -->
+  <changeSet id="addForeignKeyConstraints" author="your_name">
+    <addForeignKeyConstraint baseTableName="processes" baseColumnNames="user_id" constraintName="fk_user_id"
+      referencedTableName="users" referencedColumnNames="id" />
+    <addForeignKeyConstraint baseTableName="process_defendant" baseColumnNames="process_id"
+      constraintName="fk_process_id" referencedTableName="processes" referencedColumnNames="id" />
+    <addForeignKeyConstraint baseTableName="process_defendant" baseColumnNames="defendant_id"
+      constraintName="fk_defendant_id" referencedTableName="defendants" referencedColumnNames="id" />
+  </changeSet>
+
+</databaseChangeLog>

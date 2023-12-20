@@ -1,6 +1,6 @@
 package com.ms.analise_tecnica_po.controllers.dtos.process;
 
-import com.ms.analise_tecnica_po.models.DefendantModel;
+import com.ms.analise_tecnica_po.models.defendant.DefendantModel;
 
 import jakarta.validation.constraints.NotBlank;
 

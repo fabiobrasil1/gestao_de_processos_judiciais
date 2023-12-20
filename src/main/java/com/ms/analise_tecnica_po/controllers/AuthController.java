@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ms.analise_tecnica_po.controllers.dtos.auth.AuthDto;
-import com.ms.analise_tecnica_po.controllers.dtos.auth.DataTokenJWT;
-import com.ms.analise_tecnica_po.models.UserModel;
+import com.ms.analise_tecnica_po.controllers.dtos.auth.LoginResponseDto;
+import com.ms.analise_tecnica_po.models.user.UserModel;
 import com.ms.analise_tecnica_po.security.TokenService;
 
 import jakarta.validation.Valid;
@@ -26,15 +26,15 @@ public class AuthController {
   @Autowired
   private TokenService tokenService;
 
-  @PostMapping
+  @PostMapping("/login")
   public ResponseEntity<?> login(@RequestBody @Valid AuthDto data) {
     try {
       var token = new UsernamePasswordAuthenticationToken(data.email(), data.password());
-      var authentication = manager.authenticate(token);
+      var authentication = this.manager.authenticate(token);
 
       var tokenJWT = tokenService.generateToken((UserModel) authentication.getPrincipal());
 
-      return ResponseEntity.ok(new DataTokenJWT(tokenJWT));
+      return ResponseEntity.ok(new LoginResponseDto(tokenJWT));
 
     } catch (AuthenticationException e) {
       return ResponseEntity.status(401).body("Falha na autenticação: " + e.getMessage());

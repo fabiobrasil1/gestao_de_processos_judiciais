@@ -1,4 +1,4 @@
-package com.ms.analise_tecnica_po.models;
+package com.ms.analise_tecnica_po.models.defendant;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
+
+import com.ms.analise_tecnica_po.models.process.ProcessModel;
 
 @Entity
 @Table(name = "defendants")

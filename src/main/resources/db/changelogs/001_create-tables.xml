@@ -24,7 +24,7 @@
         <constraints primaryKey="true" nullable="false" />
       </column>
       <column name="description" type="varchar(255)" />
-      <column name="processNumber" type="varchar(255)">
+      <column name="process_number" type="varchar(255)">
         <constraints unique="true" nullable="false" />
       </column>
       <column name="user_id" type="uuid">

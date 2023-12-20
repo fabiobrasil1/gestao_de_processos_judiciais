@@ -2,13 +2,14 @@ package com.ms.analise_tecnica_po.useCases.users;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.ms.analise_tecnica_po.controllers.dtos.users.RegisterUserRecordDto;
 import com.ms.analise_tecnica_po.controllers.dtos.users.UserDetailsRecordDto;
-import com.ms.analise_tecnica_po.models.UserModel;
+import com.ms.analise_tecnica_po.models.user.UserModel;
 import com.ms.analise_tecnica_po.repositoies.UserRepository;
 
 import jakarta.transaction.Transactional;
@@ -23,12 +24,15 @@ public class RegisterUserUseCase {
   @Transactional
   public ResponseEntity<UserDetailsRecordDto> execute(RegisterUserRecordDto data, UriComponentsBuilder uriBuilder) {
     try {
-      var user = new UserModel(data);
-      user.setPassword(passwordEncoder.encode(data.password()));
-      repository.save(user);
-      var uri = uriBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri();
+      if (this.repository.findByEmail(data.email()) != null) {
+        return ResponseEntity.badRequest().build();
+      }
 
-      return ResponseEntity.created(uri).body(new UserDetailsRecordDto(user));
+      String ecryptedPassword = new BCryptPasswordEncoder().encode(data.password());
+      UserModel newUser = new UserModel(data.email(), ecryptedPassword, data.role(), data.name());
+      this.repository.save(newUser);
+
+      return ResponseEntity.ok().build();
     } catch (Exception e) {
       throw e;
     }

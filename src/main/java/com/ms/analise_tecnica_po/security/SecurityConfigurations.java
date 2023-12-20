@@ -2,15 +2,14 @@ package com.ms.analise_tecnica_po.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.context.DelegatingApplicationListener;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -18,26 +17,22 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@ComponentScan("package com.ms.analise_tecnica_po.security")
+public class SecurityConfigurations {
 
   @Autowired
   private SecurityFilter securityFilter;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http.csrf().disable()
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .and().authorizeHttpRequests()
-        // .requestMatchers("/**").permitAll() // Permitir todos os endpoints sem
-        // autenticação
-        // .and().addFilterBefore(securityFilter,
-        // UsernamePasswordAuthenticationFilter.class)
-        // .build();
-        .requestMatchers(HttpMethod.POST, "/auth").permitAll()
-        .requestMatchers(HttpMethod.POST, "/users").permitAll()
-        .anyRequest().authenticated()
-        .and().addFilterBefore(securityFilter,
-            UsernamePasswordAuthenticationFilter.class)
+    return http.csrf(csrf -> csrf.disable())
+        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .authorizeHttpRequests(autorize -> autorize
+            .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
+            .requestMatchers(HttpMethod.POST, "/users/**").permitAll()
+            .requestMatchers(HttpMethod.POST, "/process/**").hasRole("ADMIN")
+            .anyRequest().authenticated())
+        .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
         .build();
   }
 

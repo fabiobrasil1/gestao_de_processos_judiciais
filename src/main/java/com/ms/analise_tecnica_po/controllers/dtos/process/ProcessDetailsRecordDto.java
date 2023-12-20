@@ -2,7 +2,7 @@ package com.ms.analise_tecnica_po.controllers.dtos.process;
 
 import java.util.UUID;
 
-import com.ms.analise_tecnica_po.models.ProcessModel;
+import com.ms.analise_tecnica_po.models.process.ProcessModel;
 
 public record ProcessDetailsRecordDto(
     UUID id,

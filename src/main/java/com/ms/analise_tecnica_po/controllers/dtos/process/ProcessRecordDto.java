@@ -2,7 +2,7 @@ package com.ms.analise_tecnica_po.controllers.dtos.process;
 
 import java.util.UUID;
 
-import com.ms.analise_tecnica_po.models.ProcessModel;
+import com.ms.analise_tecnica_po.models.process.ProcessModel;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

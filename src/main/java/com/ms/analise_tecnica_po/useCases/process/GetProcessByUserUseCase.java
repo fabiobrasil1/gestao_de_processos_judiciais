@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ms.analise_tecnica_po.controllers.dtos.process.ProcessListDto;
-import com.ms.analise_tecnica_po.models.ProcessModel;
-import com.ms.analise_tecnica_po.models.UserModel;
+import com.ms.analise_tecnica_po.models.process.ProcessModel;
+import com.ms.analise_tecnica_po.models.user.UserModel;
 import com.ms.analise_tecnica_po.repositoies.ProcessRepository;
 import com.ms.analise_tecnica_po.repositoies.UserRepository;
 

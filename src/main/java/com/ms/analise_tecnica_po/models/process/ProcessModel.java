@@ -1,4 +1,4 @@
-package com.ms.analise_tecnica_po.models;
+package com.ms.analise_tecnica_po.models.process;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.UUID;
 
 import com.ms.analise_tecnica_po.controllers.dtos.process.ProcessRecordDto;
+import com.ms.analise_tecnica_po.models.defendant.DefendantModel;
+import com.ms.analise_tecnica_po.models.user.UserModel;
 
 @Entity
 @Table(name = "processes")
@@ -36,7 +38,7 @@ public class ProcessModel implements Serializable {
     @JoinTable(name = "process_defendant", joinColumns = @JoinColumn(name = "process_id"), inverseJoinColumns = @JoinColumn(name = "defendant_id"))
     private Set<DefendantModel> defendants = new HashSet<>();
 
-    @Column(unique = true, nullable = false)
+    @Column(name = "process_number", unique = true, nullable = false)
     private String processNumber;
 
     public ProcessModel(ProcessRecordDto dto) {

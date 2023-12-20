@@ -71,7 +71,7 @@ public class ProcessController {
       deleteProcessUC.execute(userId, processNumber);
       return ResponseEntity.noContent().build();
     } catch (EntityNotFoundException ex) {
-      String errorMessage = ex.getMessage(); // Detalhe da exceção
+      String errorMessage = ex.getMessage();
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
     } catch (Exception ex) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

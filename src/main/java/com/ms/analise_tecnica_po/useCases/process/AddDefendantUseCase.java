@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.ms.analise_tecnica_po.models.DefendantModel;
-import com.ms.analise_tecnica_po.models.ProcessModel;
+import com.ms.analise_tecnica_po.models.defendant.DefendantModel;
+import com.ms.analise_tecnica_po.models.process.ProcessModel;
 import com.ms.analise_tecnica_po.repositoies.DefendantRepository;
 import com.ms.analise_tecnica_po.repositoies.ProcessRepository;
 

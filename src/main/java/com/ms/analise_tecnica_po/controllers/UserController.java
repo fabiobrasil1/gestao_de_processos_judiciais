@@ -4,6 +4,10 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,8 +39,11 @@ public class UserController {
     return registerUserUC.execute(data, uriBuilder);
   }
 
+  @PreAuthorize("hasRole('ROLE_USER')")
   @GetMapping("/{id}")
-  public ResponseEntity<UserDetailsRecordDto> findById(@PathVariable UUID id) {
-    return findUserByIdUC.execute(id);
+  public ResponseEntity<UserDetailsRecordDto> findById() {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String userId = ((UserDetails) authentication.getPrincipal()).getUsername();
+    return findUserByIdUC.execute(UUID.fromString(userId));
   }
 }

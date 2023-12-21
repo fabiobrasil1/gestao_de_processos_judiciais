@@ -98,7 +98,7 @@ Atualizada: 21/12/2023
 Caminho do repositorio:
 src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
 
-Link a baixo:
+Link abaixo:
 - [Analise Técnica P.O - collection](src/main/resources/postman/Analise%20Técnica%20P.O%20-%20collection.postman_collection.json)
 
 A aplicação conta com a instância automática do banco de dados utilizando Liquibase.

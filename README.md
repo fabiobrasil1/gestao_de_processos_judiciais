@@ -95,7 +95,7 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
 * certifique de ultilizar a versão mais recente.
 Atualizada: 21/12/2023
 
-Caminho do repositorio:
+Caminho do repositório:
 src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
 
 Link abaixo:

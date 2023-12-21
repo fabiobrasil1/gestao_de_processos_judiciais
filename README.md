@@ -2,6 +2,44 @@
 ## Sobre
 Este repositório contém a coleção do Postman para o microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 
+## Modo de Uso
+1. Clone o repositório do GitHub: [https://github.com/fabiobrasil1/analise_tecnica_po](https://github.com/fabiobrasil1/analise_tecnica_po)
+2. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
+3. Execute o comando para instanciar o banco de dados:
+   ```bash
+   docker-compose up -d
+   ```
+4. Execute o aplicativo:
+   ```bash
+   ./mvnw spring-boot:run
+   ```
+
+## Postman Collection
+
+* certifique de ultilizar a versão mais recente.
+Atualizada: 21/12/2023
+
+Caminho do repositório:
+src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
+
+Link abaixo:
+- [Analise Técnica P.O - collection](src/main/resources/postman/Analise%20Técnica%20P.O%20-%20collection.postman_collection.json)
+
+A aplicação conta com a instância automática do banco de dados utilizando Liquibase.
+
+### Fluxo de Autenticação
+Você deve fazer login com o usuário administrador cadastrado automaticamente pelo sistema. Exemplo:
+```bash
+POST http://localhost:8081/auth/login
+
+curl --location 'http://localhost:8081/auth/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"admin@admin.com.br",
+    "password":"12345"
+}'
+```
+
 ## Endpoints
 
 ### User
@@ -19,10 +57,10 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
 - **Body:**
   ```json
   {
-    "email": "admin@admin.com.br",
-    "name": "admin name",
+    "email": "user@user.com.br",
+    "name": "user name",
     "password": "123456",
-    "role": "ADMIN"
+    "role": "USER"
   }
   ```
 
@@ -77,46 +115,6 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
     "password": "12345"
   }
   ```
-
-## Modo de Uso
-1. Clone o repositório do GitHub: [https://github.com/fabiobrasil1/analise_tecnica_po](https://github.com/fabiobrasil1/analise_tecnica_po)
-2. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
-3. Execute o comando para instanciar o banco de dados:
-   ```bash
-   docker-compose up -d
-   ```
-4. Execute o aplicativo:
-   ```bash
-   ./mvnw spring-boot:run
-   ```
-
-## Postman Collection
-
-* certifique de ultilizar a versão mais recente.
-Atualizada: 21/12/2023
-
-Caminho do repositório:
-src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
-
-Link abaixo:
-- [Analise Técnica P.O - collection](src/main/resources/postman/Analise%20Técnica%20P.O%20-%20collection.postman_collection.json)
-
-A aplicação conta com a instância automática do banco de dados utilizando Liquibase.
-
-### Fluxo de Autenticação
-Você deve fazer login com o usuário administrador cadastrado automaticamente pelo sistema. Exemplo:
-```bash
-POST http://localhost:8081/auth/login
-
-curl --location 'http://localhost:8081/auth/login' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "email":"admin@admin.com.br",
-    "password":"12345"
-}'
-```
-
-Siga os passos adicionais para chamar os endpoints conforme necessário.
 
 **Autor:** Fabio Brasil
 ```

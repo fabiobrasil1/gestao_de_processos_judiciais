@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "e7ad77da-9eba-4878-8fe5-10e1863bbda6",
+		"name": "Análise Técnica P.O - collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "18903597"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Find User by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJpZCI6ImJlMzMwYjljLWM3OTItNGRmYy04NWI5LTk1M2ZmMGM3YWM1MSIsInN1YiI6IkZhYmlvIGJyYXNpbCIsImV4cCI6MTcwMzAzOTE0OX0.HXn3srbCQseudOx5aeVoYmhlTSmBC_8fmK9Fh0HTqgo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "http://localhost:8081/users/be330b9c-c792-4dfc-85b9-953ff0c7ac51"
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJBRE1JTiIsImlkIjoiMWI5MjRmNTAtM2JmMC00NmJmLTg5OWQtOGExMDU5MTkzMjQwIiwibmFtZSI6ImFkbWluIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20uYnIiLCJleHAiOjE3MDMxOTMzMzR9.BzyMpRbOn8SrPYkfwbeNjnat7J6FS5DuAyRmPe4vElI"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"user@user.com.br\",\n    \"name\": \"user\",\n    \"password\": \"12345\",\n    \"role\": \"USER\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/users"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "process",
+			"item": [
+				{
+					"name": "register process",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJVU0VSIiwiaWQiOiI1YTQyNTA0My01MDBhLTQwM2YtYWIxMi1kYTE2ZDExYmQwM2QiLCJuYW1lIjoidXNlciIsImVtYWlsIjoidXNlckB1c2VyLmNvbS5iciIsImV4cCI6MTcwMzE5NDQ1NH0.lt6uQt2vmIjvvCjxKkSmyTLMd_UZpPvkyB5FJ_TIA3Q"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"5a425043-500a-403f-ab12-da16d11bd03d\",\n    \"description\": \"processo description\",\n    \"processNumber\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/process"
+					},
+					"response": []
+				},
+				{
+					"name": "process by process number",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJVU0VSIiwiaWQiOiI1YTQyNTA0My01MDBhLTQwM2YtYWIxMi1kYTE2ZDExYmQwM2QiLCJuYW1lIjoidXNlciIsImVtYWlsIjoidXNlckB1c2VyLmNvbS5iciIsImV4cCI6MTcwMzE5NDQ1NH0.lt6uQt2vmIjvvCjxKkSmyTLMd_UZpPvkyB5FJ_TIA3Q"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG9fbXMiLCJpZCI6ImNlODM0NWFjLTgwYzgtNDljMC04MmQ4LTFlODNlYmU1NTg4YiIsInN1YiI6IkZhYmlvIGJyYXNpbCIsImV4cCI6MTcwMjgzMTIzN30.4nko0eK5klEg9LWCwEn3ROTeO6BnJLT_p2--dT7kd8s",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": "http://localhost:8081/process/12345"
+					},
+					"response": []
+				},
+				{
+					"name": "get process by user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJVU0VSIiwiaWQiOiI1YTQyNTA0My01MDBhLTQwM2YtYWIxMi1kYTE2ZDExYmQwM2QiLCJuYW1lIjoidXNlciIsImVtYWlsIjoidXNlckB1c2VyLmNvbS5iciIsImV4cCI6MTcwMzE5NDQ1NH0.lt6uQt2vmIjvvCjxKkSmyTLMd_UZpPvkyB5FJ_TIA3Q"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8081/process/user/5a425043-500a-403f-ab12-da16d11bd03d"
+					},
+					"response": []
+				},
+				{
+					"name": "delete process",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJVU0VSIiwiaWQiOiI2YzJiNzFmYy00NzJhLTQ4YWMtODZlNi04ODY1YzAyYzkxZWMiLCJuYW1lIjoidXNlciIsImVtYWlsIjoidXNlckB1c2VyLmNvbS5iciIsImV4cCI6MTcwMzE4NDQ2Nn0.-1dgBwRcPSAxED4dv41fsSQyNkoQgAzi4k4hG8jjK1s"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8081/process/6c2b71fc-472a-48ac-86e6-8865c02c91ec/12345"
+					},
+					"response": []
+				},
+				{
+					"name": "add defendants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJVU0VSIiwiaWQiOiI1YTQyNTA0My01MDBhLTQwM2YtYWIxMi1kYTE2ZDExYmQwM2QiLCJuYW1lIjoidXNlciIsImVtYWlsIjoidXNlckB1c2VyLmNvbS5iciIsImV4cCI6MTcwMzE5NDQ1NH0.lt6uQt2vmIjvvCjxKkSmyTLMd_UZpPvkyB5FJ_TIA3Q"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"defendantName\": \"Nome do Réu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/process/12345/defendants"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"admin@admin.com.br\",\n    \"password\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8081/auth/login"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -78,11 +78,11 @@ public class ProcessController {
     }
   }
 
-  @PostMapping("/{processId}/defendants")
+  @PostMapping("/{processNumber}/defendants")
   public ResponseEntity<String> addDefendantToProcess(
-      @PathVariable UUID processId,
+      @PathVariable String processNumber,
       @Valid @RequestBody AddDefendantDto defendantRequestDto) {
-    addDefendantUseCase.execute(processId, defendantRequestDto.defendantName());
+    addDefendantUseCase.execute(processNumber, defendantRequestDto.defendantName());
     return ResponseEntity.ok("Réu adicionado com sucesso ao processo.");
   }
 }

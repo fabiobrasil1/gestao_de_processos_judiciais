@@ -8,6 +8,7 @@ public record ProcessDetailsRecordDto(
     UUID id,
     String description,
     String processNumber) {
+
   public static ProcessDetailsRecordDto fromProcessModel(ProcessModel processModel) {
     return new ProcessDetailsRecordDto(processModel.getId(), processModel.getDescription(),
         processModel.getProcessNumber());

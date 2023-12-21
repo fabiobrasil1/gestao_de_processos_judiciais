@@ -21,10 +21,9 @@ public class AddDefendantUseCase {
   @Autowired
   private DefendantRepository defendantRepository;
 
-  public void execute(UUID processId, String defendantName) {
+  public void execute(String processNumber, String defendantName) {
 
-    ProcessModel process = processRepository.findById(processId)
-        .orElseThrow(() -> new EntityNotFoundException("Processo não encontrado"));
+    ProcessModel process = findbyProcessNumber(processNumber);
 
     DefendantModel newDefendant = new DefendantModel();
     newDefendant.setName(defendantName);
@@ -35,8 +34,7 @@ public class AddDefendantUseCase {
     processRepository.save(process);
   }
 
-  public ProcessModel findProcessById(UUID processId) {
-    return processRepository.findById(processId)
-        .orElseThrow(() -> new EntityNotFoundException("Processo não encontrado"));
+  public ProcessModel findbyProcessNumber(String processNumber) {
+    return processRepository.findByProcessNumber(processNumber);
   }
 }

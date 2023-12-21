@@ -1,5 +1,5 @@
 ## Sobre
-Microserviço de Gerenciamento de Processos
+Microserviço de Gerenciamento de Processos.
 Este repositório contém a implementação de um microserviço utilizando Spring Boot e Postgresql para o gerenciamento de processos judiciais. A seguir, são apresentadas as informações necessárias para entender, executar e contribuir para o projeto.
 
 

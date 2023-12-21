@@ -1,0 +1,243 @@
+{
+	"info": {
+		"_postman_id": "e7ad77da-9eba-4878-8fe5-10e1863bbda6",
+		"name": "Analise Técnica P.O - collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18903597"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Find User by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/users/ce8345ac-80c8-49c0-82d8-1e83ebe5588b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users",
+								"ce8345ac-80c8-49c0-82d8-1e83ebe5588b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@admin2.com.br\",\n    \"name\": \"admin name\",\n    \"password\": \"123456\",\n    \"role\":\"ADMIN\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "process",
+			"item": [
+				{
+					"name": "register process",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG8iLCJzdWIiOiJBRE1JTiIsImlkIjoiZDkzZjllZWItNzU2NS00NjU5LWJhMjktYjRhZTM5NDQ4OTEwIiwibmFtZSI6ImFkbWluIG5hbWUiLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbS5iciIsImV4cCI6MTcwMzEwNTczMX0.sCzwn6e6l5S0T-UNSWydjDFoFyF5GXOglXMVu-qfvdQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": \"2fdc0d41-c186-429a-8d3c-f1fc10dcf580\",\n    \"description\": \"teste2\",\n    \"processNumber\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/process",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"process"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "process by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhbmFsaXNlX3RlY25pY2FfcG9fbXMiLCJpZCI6ImVlYjUzNWQzLTA0ODEtNDNhMC05YmFmLTBlYWViNjY2MzcxNiIsInN1YiI6InVzZXIgbmFtZSBleGFtcGxlIiwiZXhwIjoxNzAyNzkxNzk2fQ.E0-QCLqLJh9ZOgwZeRWyyYEj0IoSi1K8r3I2bJxfUGg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/process/203f9901-d1e4-4738-93c8-a313a5e280d5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"process",
+								"203f9901-d1e4-4738-93c8-a313a5e280d5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get process by user",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete process",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "add defendants",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"defendantName\": \"Nome do Réu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/process/af888be8-393e-478c-90d8-c7664e2019fb/defendants",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"process",
+								"af888be8-393e-478c-90d8-c7664e2019fb",
+								"defendants"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"admin@amin.com.br\",\n    \"password\":\"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

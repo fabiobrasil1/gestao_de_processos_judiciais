@@ -1,4 +1,3 @@
-Claro, vou gerar um documento Markdown para você com base nas informações fornecidas:
 
 ```markdown
 ## Sobre
@@ -20,7 +19,7 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
 - **Body:**
   ```json
   {
-    "email": "admin@admin2.com.br",
+    "email": "admin@admin.com.br",
     "name": "admin name",
     "password": "123456",
     "role": "ADMIN"
@@ -37,7 +36,7 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
   ```json
   {
     "userId": "2fdc0d41-c186-429a-8d3c-f1fc10dcf580",
-    "description": "teste2",
+    "description": "process description",
     "processNumber": "12345"
   }
   ```
@@ -74,7 +73,7 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
 - **Body:**
   ```json
   {
-    "email": "admin@amin.com.br",
+    "email": "admin@admin.com.br",
     "password": "12345"
   }
   ```
@@ -113,5 +112,3 @@ Siga os passos adicionais para chamar os endpoints conforme necessário.
 
 **Autor:** Fabio Brasil
 ```
-
-Esse documento pode ser usado como base para um README mais detalhado no seu repositório. Certifique-se de revisar e ajustar conforme necessário.

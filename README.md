@@ -32,7 +32,7 @@ docker-compose up -d
 ## Exemplos de requisição:
 * Postman collection - atualizada: 21/12/2023
 
-* certifique-se de ultilizar a versão mais recente encontrado diretorio a baixo:
+* Certifique-se de ultilizar a versão mais recente encontrado diretorio a baixo:
   
 src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
 

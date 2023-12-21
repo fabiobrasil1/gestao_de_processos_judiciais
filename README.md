@@ -79,9 +79,9 @@ curl --location 'http://localhost:8081/auth/login' \
   }
   ```
 
-#### Process by id
+#### Process by Process Number
 - **Método:** GET
-- **Endpoint:** http://localhost:8081/process/203f9901-d1e4-4738-93c8-a313a5e280d5
+- **Endpoint:** http://localhost:8081/process/12345
 - **Autenticação:** Bearer Token
 
 #### Get Process by User

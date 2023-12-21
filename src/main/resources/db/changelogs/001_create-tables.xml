@@ -4,7 +4,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
   <!-- Create users table -->
-  <changeSet id="createUsersTable" author="your_name">
+  <changeSet id="createUsersTable" author="fabio dev">
     <createTable tableName="users">
       <column name="id" type="uuid">
         <constraints primaryKey="true" nullable="false" />
@@ -18,7 +18,7 @@
   </changeSet>
 
   <!-- Create processes table -->
-  <changeSet id="createProcessesTable" author="your_name">
+  <changeSet id="createProcessesTable" author="fabio dev">
     <createTable tableName="processes">
       <column name="id" type="uuid">
         <constraints primaryKey="true" nullable="false" />
@@ -34,7 +34,7 @@
   </changeSet>
 
   <!-- Create defendants table -->
-  <changeSet id="createDefendantsTable" author="your_name">
+  <changeSet id="createDefendantsTable" author="fabio dev">
     <createTable tableName="defendants">
       <column name="id" type="uuid">
         <constraints primaryKey="true" nullable="false" />
@@ -44,7 +44,7 @@
   </changeSet>
 
   <!-- Create process_defendant join table -->
-  <changeSet id="createProcessDefendantTable" author="your_name">
+  <changeSet id="createProcessDefendantTable" author="fabio dev">
     <createTable tableName="process_defendant">
       <column name="process_id" type="uuid">
         <constraints nullable="false" />
@@ -60,7 +60,7 @@
   </changeSet>
 
   <!-- Add foreign key constraints -->
-  <changeSet id="addForeignKeyConstraints" author="your_name">
+  <changeSet id="addForeignKeyConstraints" author="fabio dev">
     <addForeignKeyConstraint baseTableName="processes" baseColumnNames="user_id" constraintName="fk_user_id"
       referencedTableName="users" referencedColumnNames="id" />
     <addForeignKeyConstraint baseTableName="process_defendant" baseColumnNames="process_id"

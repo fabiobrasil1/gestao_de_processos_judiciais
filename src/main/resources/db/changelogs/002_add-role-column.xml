@@ -12,4 +12,8 @@
     </addColumn>
   </changeSet>
 
+  <changeSet id="createTablesCompleted" author="fabio dev">
+    <comment>ChangeSets de criação de tabelas concluídas.</comment>
+  </changeSet>
+
 </databaseChangeLog>

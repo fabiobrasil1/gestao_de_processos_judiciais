@@ -6,5 +6,4 @@
   <include file="db/changelogs/001_create-tables.xml" />
   <include file="db/changelogs/002_add-role-column.xml" />
 
-
 </databaseChangeLog>

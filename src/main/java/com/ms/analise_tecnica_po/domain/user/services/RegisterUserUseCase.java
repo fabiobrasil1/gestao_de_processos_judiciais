@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.ms.analise_tecnica_po.domain.process.controllers.dtos.ProcessDetailsRecordDto;
 import com.ms.analise_tecnica_po.domain.user.controllers.dtos.RegisterUserRecordDto;
 import com.ms.analise_tecnica_po.domain.user.controllers.dtos.UserDetailsRecordDto;
 import com.ms.analise_tecnica_po.domain.user.models.UserModel;
@@ -18,8 +19,6 @@ import jakarta.transaction.Transactional;
 public class RegisterUserUseCase {
   @Autowired
   private UserRepository repository;
-  @Autowired
-  private PasswordEncoder passwordEncoder;
 
   @Transactional
   public ResponseEntity<UserDetailsRecordDto> execute(RegisterUserRecordDto data, UriComponentsBuilder uriBuilder) {
@@ -32,7 +31,9 @@ public class RegisterUserUseCase {
       UserModel newUser = new UserModel(data.email(), ecryptedPassword, data.role(), data.name());
       this.repository.save(newUser);
 
-      return ResponseEntity.ok().build();
+      var uri = uriBuilder.path("/users/{id}").buildAndExpand(newUser.getId()).toUri();
+
+      return ResponseEntity.created(uri).body(UserDetailsRecordDto.fromProcessModel(newUser));
     } catch (Exception e) {
       throw e;
     }

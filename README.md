@@ -29,15 +29,10 @@ docker-compose up -d
 ```
 
 
-## Exemplos de requisiçao:
+## Exemplos de requisição:
 * Postman collection - atualizada: 21/12/2023
 
-src/
-|-- main/
-|   |-- resources/
-|       |-- postman/
-|           |-- Analise Técnica P.O - collection.postman_collection.json
-
+src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
 
 
 Autor: Fabio Brasil

@@ -1,40 +1,101 @@
+markdown
+Copy code
 ## Sobre
-Microserviço de Gerenciamento de Processos.
-Este repositório contém a implementação de um microserviço utilizando Spring Boot e Postgresql para o gerenciamento de processos judiciais. A seguir, são apresentadas as informações necessárias para entender, executar e contribuir para o projeto.
+Este repositório contém a coleção do Postman para o microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 
+## Endpoints
 
-## Requisitos da aplicação.
+### User
 
-Utilizando Spring Boot e Postgresql como banco de dados crie um microsserviço com as funcionalidades descritas abaixo:
-1. Como usuário preciso salvar meus números de processos no sistema, quero poder enviar estes números através de uma requisição POST.
-- Obs : Os números de processos devem ser únicos
-2. Como usuário quero receber um erro ao tentar cadastrar um processo que já foi cadastrado anteriormente.
-3. Como usuário quero poder consultar os números de processos que salvei. 4. Como usuário quero poder excluir um número de processo que salvei.
-5. Como usuário quero poder adicionar um Réu a um processo que já cadastrei anteriormente.
+#### Find User by id
+- **Método:** GET
+- **Endpoint:** http://localhost:8081/users/ce8345ac-80c8-49c0-82d8-1e83ebe5588b
+- **Autenticação:** Bearer Token
 
-
-## Modo de Usar
-- Clone o repositório do GitHub: https://github.com/fabiobrasil1/analise_tecnica_po
-- Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
-- Execute o comando para instaciar o banco de dados.
-```
+#### Register User
+- **Método:** POST
+- **Endpoint:** http://localhost:8081/users
+- **Autenticação:** Bearer Token
+- **Body:**
+  ```json
+  {
+    "email": "admin@admin2.com.br",
+    "name": "admin name",
+    "password": "123456",
+    "role": "ADMIN"
+  }
+Process
+Register Process
+Método: POST
+Endpoint: http://localhost:8081/process
+Autenticação: Bearer Token
+Body:
+json
+Copy code
+{
+  "userId": "2fdc0d41-c186-429a-8d3c-f1fc10dcf580",
+  "description": "teste2",
+  "processNumber": "12345"
+}
+Process by id
+Método: GET
+Endpoint: http://localhost:8081/process/203f9901-d1e4-4738-93c8-a313a5e280d5
+Autenticação: Bearer Token
+Get Process by User
+Método: GET
+Autenticação: Bearer Token
+Delete Process
+Método: GET
+Autenticação: Bearer Token
+Add Defendants
+Método: POST
+Endpoint: http://localhost:8081/process/af888be8-393e-478c-90d8-c7664e2019fb/defendants
+Autenticação: Bearer Token
+Body:
+json
+Copy code
+{
+  "defendantName": "Nome do Réu"
+}
+Auth
+Login
+Método: POST
+Endpoint: http://localhost:8081/auth/login
+Body:
+json
+Copy code
+{
+  "email": "admin@amin.com.br",
+  "password": "12345"
+}
+Modo de Uso
+Clone o repositório do GitHub: https://github.com/fabiobrasil1/analise_tecnica_po
+Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
+Execute o comando para instanciar o banco de dados:
+bash
+Copy code
 docker-compose up -d
-```
-
-- Execução do Aplicativo
-
-```
+Execute o aplicativo:
+bash
+Copy code
 ./mvnw spring-boot:run
+Postman Collection
+Analise Técnica P.O - collection
+A aplicação conta com a instância automática do banco de dados utilizando Liquibase.
 
-```
+Fluxo de Autenticação
+Você deve fazer login com o usuário administrador cadastrado automaticamente pelo sistema. Exemplo:
 
+bash
+Copy code
+POST http://localhost:8081/auth/login
 
-## Exemplos de requisição:
-* Postman collection - atualizada: 21/12/2023
-
-* Certifique-se de ultilizar a versão mais recente encontrado diretorio a baixo:
-  
-src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
-
+curl --location 'http://localhost:8081/auth/login' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "email":"admin@admin.com.br",
+    "password":"12345"
+}'
+Siga os passos adicionais para chamar os endpoints conforme necessário.
 
 Autor: Fabio Brasil

@@ -22,7 +22,7 @@ import com.ms.analise_tecnica_po.domain.process.controllers.dtos.ProcessListDto;
 import com.ms.analise_tecnica_po.domain.process.controllers.dtos.ProcessRecordDto;
 import com.ms.analise_tecnica_po.domain.process.services.AddDefendantUseCase;
 import com.ms.analise_tecnica_po.domain.process.services.DeleteProcessUseCase;
-import com.ms.analise_tecnica_po.domain.process.services.FindProcessByIdUseCase;
+import com.ms.analise_tecnica_po.domain.process.services.FindByProcessNumberUseCase;
 import com.ms.analise_tecnica_po.domain.process.services.GetProcessByUserUseCase;
 import com.ms.analise_tecnica_po.domain.process.services.RegisterProcessUseCase;
 
@@ -36,7 +36,7 @@ public class ProcessController {
   @Autowired
   private RegisterProcessUseCase registerProcessUC;
   @Autowired
-  private FindProcessByIdUseCase findProcessByIdUC;
+  private FindByProcessNumberUseCase findProcessByProcessNumberUC;
   @Autowired
   private GetProcessByUserUseCase getProcessByUserUC;
   @Autowired
@@ -52,9 +52,9 @@ public class ProcessController {
     return registerProcessUC.execute(data, uriBuilder);
   }
 
-  @GetMapping("/{id}")
-  public ResponseEntity<ProcessDetailsRecordDto> findById(@PathVariable UUID id) {
-    return findProcessByIdUC.execute(id);
+  @GetMapping("/{processNumber}")
+  public ResponseEntity<ProcessDetailsRecordDto> findById(@PathVariable String processNumber) {
+    return findProcessByProcessNumberUC.execute(processNumber);
   }
 
   @GetMapping("/user/{userId}")

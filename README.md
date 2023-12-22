@@ -1,5 +1,3 @@
-Claro, aqui está a versão atualizada do seu README, incorporando as melhorias nos métodos e a documentação gerada pelo Postman:
-
 ## Sobre
 Este repositório contém a coleção do Postman para o microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 

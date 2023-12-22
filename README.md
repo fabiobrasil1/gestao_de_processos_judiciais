@@ -2,11 +2,10 @@
 Este repositório contém conta microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 
 ## Modo de Uso
-```
 1. Clone o repositório do GitHub: [https://github.com/fabiobrasil1/analise_tecnica_po](https://github.com/fabiobrasil1/analise_tecnica_po)
 2. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
 3. Execute o comando para instanciar o banco de dados:
-   ```bash
+   ```
    docker-compose up -d
    ```
 4. Execute o aplicativo:
@@ -44,11 +43,12 @@ curl --location 'http://localhost:8081/auth/login' \
 
 ### User
 
+```
 #### Find User by id
-```markdown
 - **Método:** GET
 - **Endpoint:** http://localhost:8081/users/be330b9c-c792-4dfc-85b9-953ff0c7ac51
 - **Autenticação:** Bearer Token
+```
 
 #### Register User
 - **Método:** POST
@@ -119,4 +119,3 @@ curl --location 'http://localhost:8081/auth/login' \
   ```
 
 **Autor:** Fabio Brasil
-```

@@ -1,8 +1,10 @@
+Claro, aqui está a versão atualizada do seu README, incorporando as melhorias nos métodos e a documentação gerada pelo Postman:
 
 ## Sobre
 Este repositório contém a coleção do Postman para o microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 
 ## Modo de Uso
+```
 1. Clone o repositório do GitHub: [https://github.com/fabiobrasil1/analise_tecnica_po](https://github.com/fabiobrasil1/analise_tecnica_po)
 2. Certifique-se de ter o Docker e o Docker Compose instalados em sua máquina.
 3. Execute o comando para instanciar o banco de dados:
@@ -16,11 +18,11 @@ Este repositório contém a coleção do Postman para o microserviço de Gerenci
 
 ## Postman Collection
 
-* certifique de ultilizar a versão mais recente.
+* Certifique-se de utilizar a versão mais recente.
 Atualizada: 21/12/2023
 
 Caminho do repositório:
-src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json
+`src/main/resources/postman/Analise Técnica P.O - collection.postman_collection.json`
 
 Link abaixo:
 - [Analise Técnica P.O - collection](src/main/resources/postman/Analise%20Técnica%20P.O%20-%20collection.postman_collection.json)
@@ -47,7 +49,7 @@ curl --location 'http://localhost:8081/auth/login' \
 #### Find User by id
 ```markdown
 - **Método:** GET
-- **Endpoint:** http://localhost:8081/users/ce8345ac-80c8-49c0-82d8-1e83ebe5588b
+- **Endpoint:** http://localhost:8081/users/be330b9c-c792-4dfc-85b9-953ff0c7ac51
 - **Autenticação:** Bearer Token
 
 #### Register User
@@ -58,8 +60,8 @@ curl --location 'http://localhost:8081/auth/login' \
   ```json
   {
     "email": "user@user.com.br",
-    "name": "user name",
-    "password": "123456",
+    "name": "user",
+    "password": "12345",
     "role": "USER"
   }
   ```
@@ -73,8 +75,8 @@ curl --location 'http://localhost:8081/auth/login' \
 - **Body:**
   ```json
   {
-    "userId": "2fdc0d41-c186-429a-8d3c-f1fc10dcf580",
-    "description": "process description",
+    "userId": "5a425043-500a-403f-ab12-da16d11bd03d",
+    "description": "processo description",
     "processNumber": "12345"
   }
   ```
@@ -86,15 +88,17 @@ curl --location 'http://localhost:8081/auth/login' \
 
 #### Get Process by User
 - **Método:** GET
+- **Endpoint:** http://localhost:8081/process/user/5a425043-500a-403f-ab12-da16d11bd03d
 - **Autenticação:** Bearer Token
 
 #### Delete Process
-- **Método:** GET
+- **Método:** DELETE
+- **Endpoint:** http://localhost:8081/process/6c2b71fc-472a-48ac-86e6-8865c02c91ec/12345
 - **Autenticação:** Bearer Token
 
 #### Add Defendants
 - **Método:** POST
-- **Endpoint:** http://localhost:8081/process/af888be8-393e-478c-90d8-c7664e2019fb/defendants
+- **Endpoint:** http://localhost:8081/process/12345/defendants
 - **Autenticação:** Bearer Token
 - **Body:**
   ```json
@@ -111,8 +115,8 @@ curl --location 'http://localhost:8081/auth/login' \
 - **Body:**
   ```json
   {
-    "email": "admin@admin.com.br",
-    "password": "12345"
+    "email":"admin@admin.com.br",
+    "password":"12345"
   }
   ```
 

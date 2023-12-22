@@ -1,5 +1,5 @@
 ## Sobre
-Este repositório contém a coleção do Postman para o microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
+Este repositório contém conta microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
 
 ## Modo de Uso
 ```
@@ -25,7 +25,7 @@ Caminho do repositório:
 Link abaixo:
 - [Analise Técnica P.O - collection](src/main/resources/postman/Analise%20Técnica%20P.O%20-%20collection.postman_collection.json)
 
-A aplicação conta com a instância automática do banco de dados utilizando Liquibase.
+* A aplicação conta com a instância automática do banco de dados utilizando Liquibase.
 
 ### Fluxo de Autenticação
 Você deve fazer login com o usuário administrador cadastrado automaticamente pelo sistema. Exemplo:

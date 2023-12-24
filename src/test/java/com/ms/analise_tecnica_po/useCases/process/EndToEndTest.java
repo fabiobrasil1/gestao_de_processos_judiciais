@@ -2,6 +2,8 @@ package com.ms.analise_tecnica_po.useCases.process;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ms.analise_tecnica_po.domain.process.controllers.dtos.AddDefendantDto;
+import com.ms.analise_tecnica_po.domain.process.controllers.dtos.ProcessRecordDto;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -10,12 +12,16 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.notNullValue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@AutoConfigureMockMvc(addFilters = false)
+import java.util.UUID;
+
 @SpringBootTest
+@AutoConfigureMockMvc(addFilters = false)
 public class EndToEndTest {
 
   @Autowired
@@ -23,6 +29,29 @@ public class EndToEndTest {
 
   @Autowired
   private ObjectMapper objectMapper;
+
+  @Test
+  public void testRegisterProcessEndToEnd() throws Exception {
+    UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
+    String description = "processo description";
+    String processNumber = "12345";
+
+    mockMvc.perform(post("/process")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(asJsonString(new ProcessRecordDto(userId, description, processNumber))))
+        .andExpect(status().isCreated())
+        .andExpect(content().string(notNullValue()));
+  }
+
+  @Test
+  public void testRetrieveUserProcesses() throws Exception {
+    UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
+
+    mockMvc.perform(get("/process/user/{userId}", userId))
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(content().json("{\"processNumbers\":[\"12345\"]}"));
+  }
 
   @Test
   public void testAddDefendantEndToEnd() throws Exception {
@@ -34,6 +63,14 @@ public class EndToEndTest {
         .content(asJsonString(new AddDefendantDto(defendantName))))
         .andExpect(status().isOk())
         .andExpect(content().string(notNullValue()));
+  }
+
+  @Test
+  public void deleteProcesses() throws Exception {
+    UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
+    String processNUmber = "12345";
+    mockMvc.perform(delete("/process/{userId}/{processNumber}", userId, processNUmber))
+        .andExpect(status().isNoContent());
   }
 
   private String asJsonString(Object obj) throws Exception {

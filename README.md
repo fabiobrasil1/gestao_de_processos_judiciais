@@ -1,5 +1,18 @@
 ## Sobre
-Este repositório contém conta microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot e Postgresql.
+Este repositório contém conta microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot, Postgresql, Docker, Liquibase, JUNIT para teste do endpoint de ponta a ponta.
+
+
+## Requisitos
+
+1. Como usuário preciso salvar meus números de processos no sistema, quero poder
+enviar estes números através de uma requisição POST.
+- Obs : Os números de processos devem ser únicos
+2. Como usuário quero receber um erro ao tentar cadastrar um processo que já foi
+cadastrado anteriormente.
+3. Como usuário quero poder consultar os números de processos que salvei.
+4. Como usuário quero poder excluir um número de processo que salvei.
+5. Como usuário quero poder adicionar um Réu a um processo que já cadastrei
+anteriormente.
 
 ## Modo de Uso
 1. Clone o repositório do GitHub: [https://github.com/fabiobrasil1/analise_tecnica_po](https://github.com/fabiobrasil1/analise_tecnica_po)
@@ -11,6 +24,10 @@ Este repositório contém conta microserviço de Gerenciamento de Processos, des
 4. Execute o aplicativo:
    ```bash
    ./mvnw spring-boot:run
+   ```
+5. Para executar os testes de ponta a ponta:
+   ```bash
+   mvn test
    ```
 
 ## Postman Collection

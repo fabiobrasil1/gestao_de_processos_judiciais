@@ -15,6 +15,21 @@ services:
     restart: always
     networks:
       - app-connect
+  tests_db:
+    container_name: publicacoes_online_tests_db
+    image: postgres:14
+    volumes:
+      - db-data:/data
+      - ./db_init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    environment:
+      POSTGRES_DB: publicacoes_online_tests_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    restart: always
+    networks:
+      - app-connect
 
 volumes:
   db-data:

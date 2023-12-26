@@ -11,8 +11,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
 
 import liquibase.integration.spring.SpringLiquibase;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@EnableSwagger2
 @ComponentScan(basePackages = "com.ms.analise_tecnica_po")
 @PropertySource("classpath:application.properties")
 public class AnaliseTecnicaPoApplication {

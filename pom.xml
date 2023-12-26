@@ -6,7 +6,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.2.0</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 	<groupId>com.ms</groupId>
 	<artifactId>analise_tecnica_po</artifactId>
@@ -81,7 +81,6 @@
 			<version>3.0.2</version>
 		</dependency>
 
-		<!-- Adicionando a dependência do Liquibase -->
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
@@ -98,6 +97,12 @@
 			<artifactId>logback-classic</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-boot-starter</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -106,7 +111,32 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>4.24.0</version>
+				<configuration>
+					<propertyFile>
+						src/test/resources/application-test.properties
+					</propertyFile>
+					<changeLogFile>src/main/resources/db/changelog-master.xml</changeLogFile>
+				</configuration>
+			</plugin>
 		</plugins>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<properties>
+				<liquibase.propertyFile>src/test/resources/application-test.properties</liquibase.propertyFile>
+			</properties>
+		</profile>
+	</profiles>
 
 </project>

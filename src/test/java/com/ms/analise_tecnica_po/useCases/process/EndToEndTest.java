@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.notNullValue;
@@ -31,6 +32,7 @@ public class EndToEndTest {
   private ObjectMapper objectMapper;
 
   @Test
+  @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
   public void testRegisterProcessEndToEnd() throws Exception {
     UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
     String description = "processo description";
@@ -44,6 +46,7 @@ public class EndToEndTest {
   }
 
   @Test
+  @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
   public void testRetrieveUserProcesses() throws Exception {
     UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
 
@@ -54,6 +57,7 @@ public class EndToEndTest {
   }
 
   @Test
+  @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
   public void testAddDefendantEndToEnd() throws Exception {
     String processNumber = "12345";
     String defendantName = "defendant name";
@@ -66,6 +70,7 @@ public class EndToEndTest {
   }
 
   @Test
+  @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
   public void deleteProcesses() throws Exception {
     UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
     String processNUmber = "12345";

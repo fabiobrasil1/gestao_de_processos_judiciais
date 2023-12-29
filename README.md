@@ -1,5 +1,5 @@
 ## Sobre
-Este repositório contém conta microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot, Postgresql, Docker, Liquibase e JUNIT para teste do endpoint de ponta a ponta.
+Este repositório conta com um microserviço de Gerenciamento de Processos, desenvolvido com Spring Boot, Postgresql, Docker, Liquibase e JUNIT para teste do endpoint de ponta a ponta.
 
 
 ## Requisitos

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.ms.analise_tecnica_po.domain.user.models.UserModel;
 import com.ms.analise_tecnica_po.domain.user.models.UserRole;
 
+@Repository
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
 
   boolean existsByEmailIgnoreCase(String email);

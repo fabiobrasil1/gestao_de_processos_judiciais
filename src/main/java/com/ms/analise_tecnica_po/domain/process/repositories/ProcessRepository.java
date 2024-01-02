@@ -7,9 +7,12 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
 import com.ms.analise_tecnica_po.domain.process.models.ProcessModel;
 import com.ms.analise_tecnica_po.domain.user.models.UserModel;
 
+@Repository
 public interface ProcessRepository extends JpaRepository<ProcessModel, UUID> {
   boolean existsByProcessNumberIgnoreCase(String processNumber);
 

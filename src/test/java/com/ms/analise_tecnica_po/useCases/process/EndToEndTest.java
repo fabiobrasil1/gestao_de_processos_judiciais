@@ -1,15 +1,19 @@
 package com.ms.analise_tecnica_po.useCases.process;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+// import com.ms.analise_tecnica_po.config.TestDataInitializer;
 import com.ms.analise_tecnica_po.domain.process.controllers.dtos.AddDefendantDto;
 import com.ms.analise_tecnica_po.domain.process.controllers.dtos.ProcessRecordDto;
 
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.notNullValue;
@@ -23,6 +27,9 @@ import java.util.UUID;
 
 @SpringBootTest
 @AutoConfigureMockMvc(addFilters = false)
+@RunWith(SpringRunner.class)
+@ActiveProfiles("test")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class EndToEndTest {
 
   @Autowired
@@ -37,7 +44,6 @@ public class EndToEndTest {
     UUID userId = UUID.fromString("1b924f50-3bf0-46bf-899d-8a1059193240");
     String description = "processo description";
     String processNumber = "12345";
-
     mockMvc.perform(post("/process")
         .contentType(MediaType.APPLICATION_JSON)
         .content(asJsonString(new ProcessRecordDto(userId, description, processNumber))))
@@ -79,6 +85,7 @@ public class EndToEndTest {
   }
 
   private String asJsonString(Object obj) throws Exception {
+    ObjectMapper objectMapper = new ObjectMapper();
     return objectMapper.writeValueAsString(obj);
   }
 }
